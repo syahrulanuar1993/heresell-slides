@@ -642,6 +642,16 @@
   .slide.active .cascade .w:nth-child(7){animation-delay:1.35s}
   /* trinity punch revealed as its own fragment */
   .pilwrap .trinity-punch.frag.on{opacity:1;}
+  /* soft-launch fee pill */
+  .feepill{
+    margin-top:5vh;display:inline-flex;align-items:center;gap:.2em;flex-wrap:wrap;justify-content:center;
+    background:var(--white);border:1px solid var(--grey);border-radius:999px;
+    padding:clamp(12px,1.6vh,20px) clamp(22px,2.4vw,40px);box-shadow:0 18px 50px rgba(11,27,86,.10);
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;color:var(--navy);
+    font-size:clamp(1.05rem,1.9vw,2rem);
+  }
+  .feepill s{color:#9AA7C7;font-weight:600;text-decoration-thickness:2px;}
+  .feepill b{color:var(--blue);font-weight:800;font-size:1.25em;}
 </style>
 <script>
   /* password gate — remembers unlock on this browser */
@@ -748,7 +758,7 @@
   <section class="slide cover bg-mist">
     <div class="cover-left">
       <div class="wordmark rise" style="color:var(--navy)" data-edit="cvlogo">Heresell</div>
-      <div class="cover-eyebrow rise" data-edit="cvevent">[NAMA ACARA] &nbsp;·&nbsp; 19 OKT 2026</div>
+      <div class="cover-eyebrow rise" data-edit="cvevent">HERESELL SOFT LAUNCH &nbsp;·&nbsp; 19 OKT 2026</div>
       <h1 class="cover-head rise"><span class="glow" style="color:var(--blue)" data-edit="cvl1">Sales pages</span><br><span data-edit="cvl2">that sell.</span></h1>
       <div class="cover-trust rise">
         <span class="ct" data-edit="cvb1c">Bayaran FPX</span>
@@ -976,10 +986,10 @@
 
   <!-- 18 · OFFER -->
   <section class="slide bg-soft">
-    <p class="eyebrow rise" data-edit="ofrE">Mula hari ini</p>
+    <p class="eyebrow rise" data-edit="ofrE">Tawaran Soft Launch</p>
     <h1 class="hero mega rise"><span class="glow" data-edit="ofrH">RM0</span></h1>
-    <p class="support rise" data-edit="ofrS"><b style="color:var(--navy);font-weight:800">komitmen.</b> Bayar ikut guna.</p>
-    <p class="quiet rise" data-edit="ofrQ" style="font-size:clamp(1rem,1.5vw,1.6rem)">+ kredit AI percuma setiap bulan</p>
+    <p class="support rise" data-edit="ofrS"><b style="color:var(--navy);font-weight:800">Yuran platform</b> — dikecualikan sehingga 31 Disember 2026.</p>
+    <div class="feepill frag" data-edit="ofrF">Hanya bayar caj payment gateway &nbsp;<s>RM 1.00</s>&nbsp; <b>RM 0.80</b></div>
   </section>
 
   <!-- 19 · QR CTA -->
