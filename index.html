@@ -75,13 +75,16 @@
   .sub{font-weight:400;font-size:clamp(1.15rem,1.85vw,2.1rem);line-height:1.5;color:var(--ink2);margin-top:3vh;max-width:40ch;}
   .dark .sub,.dark .label{color:rgba(255,255,255,.62);}
   .blue{color:var(--blue);}
+  .pw{color:var(--blue);font-weight:700;}
+  .dark .pw{color:#8FB0FF;}
+  .strike{color:var(--mute);text-decoration:line-through;text-decoration-thickness:.06em;text-decoration-color:rgba(142,144,151,.8);}
   .dark .blue{color:#7FA2FF;}
   .grey{color:#B9BAC0;}
   .left{text-align:left;align-items:flex-start;}
 
   /* hand-drawn circle around one word */
   .circ{position:relative;display:inline-block;white-space:nowrap;}
-  .circ svg{position:absolute;left:-9%;top:-20%;width:120%;height:146%;overflow:visible;pointer-events:none;}
+  .circ svg{position:absolute;left:-12%;top:-18%;width:124%;height:142%;overflow:visible;pointer-events:none;}
   .circ path{fill:none;stroke:var(--blue);stroke-width:3.2;stroke-linecap:round;vector-effect:non-scaling-stroke;
     stroke-dasharray:1000;stroke-dashoffset:1000;}
   .slide.active .circ path{animation:draw 1.1s cubic-bezier(.6,.05,.3,1) .7s forwards;}
@@ -362,7 +365,7 @@
   <!-- 1 · Cover -->
   <section class="slide active" data-title="Cover">
     <div class="brand corner">Heresell</div>
-    <h1 class="h-xl rise" data-edit="c1">Sales page yang <span class="blue">menjual.</span></h1>
+    <h1 class="h-xl rise" data-edit="c1">Sales page yang <span class="pw">menjual.</span></h1>
     <p class="label rise" style="margin:5vh 0 0;font-size:clamp(1.1rem,1.6vw,1.8rem)" data-edit="c2">Soft Launch · 19 Oktober 2026</p>
   </section>
 
@@ -379,13 +382,13 @@
       <div class="rise">
         <p class="label" data-edit="b0">Siapa saya</p>
         <h1 class="h1" data-edit="b1">Syahrul Anuar</h1>
-        <p class="sub" data-edit="b2">Bukan designer. Seorang akauntan.</p>
+        <p class="sub" data-edit="b2">Bukan designer. Seorang <span class="pw">akauntan.</span></p>
       </div>
       <div class="rows rise">
         <div class="row">
           <div class="when" data-edit="b3">2016 – 2022</div>
           <div class="what"><span data-edit="b4">Akauntan</span>
-            <small data-edit="b5">Sebahagian pasukan operasi yang membawa segmen pelancongan dari <b style="color:var(--ink);font-weight:600">RM0 ke RM50 juta</b>.</small></div>
+            <small data-edit="b5">Sebahagian pasukan operasi yang membawa segmen pelancongan dari <span class="pw">RM0 ke RM50 juta</span>.</small></div>
         </div>
         <div class="row">
           <div class="when" data-edit="b6">Kini</div>
@@ -404,7 +407,7 @@
   <!-- 4 · Empat tahun -->
   <section class="slide alt" data-title="Empat tahun">
     <p class="label rise" data-edit="e0">Herepay</p>
-    <h1 class="h1 rise" data-edit="e1">Empat tahun, kami bantu sekolah kutip bayaran.</h1>
+    <h1 class="h1 rise" data-edit="e1"><span class="pw">Empat tahun,</span> kami bantu sekolah kutip bayaran.</h1>
     <div class="pills frag">
       <span class="pill" data-edit="e2">Yuran</span><span class="pill" data-edit="e3">Infaq</span><span class="pill" data-edit="e4">Jualan koperasi</span>
     </div>
@@ -414,8 +417,8 @@
   <section class="slide" data-title="Corak">
     <div class="swap">
       <h1 class="h1 rise" data-edit="p1">Dan kami nampak satu corak.</h1>
-      <h1 class="h1 frag" data-edit="p2">Orang tak perlukan website.</h1>
-      <h1 class="h1 frag" data-edit="p3">Mereka perlukan <span class="blue">jualan.</span></h1>
+      <h1 class="h1 frag" data-edit="p2">Orang <span class="pw">tak perlukan</span> website.</h1>
+      <h1 class="h1 frag" data-edit="p3">Mereka perlukan <span class="pw">jualan.</span></h1>
     </div>
   </section>
 
@@ -423,7 +426,7 @@
 
   <!-- 6 · Idea gempak -->
   <section class="slide" data-title="Idea gempak">
-    <h1 class="h-xl rise" style="max-width:16ch" data-edit="g1">Setiap pemilik bisnes ada idea <span class="circ">gempak.<svg viewBox="0 0 200 80" preserveAspectRatio="none"><path d="M30 54 C 16 26, 92 6, 160 14 C 198 19, 200 54, 158 67 C 110 82, 28 76, 13 54 C 4 38, 42 17, 96 15"/></svg></span></h1>
+    <h1 class="h-xl rise" style="max-width:16ch" data-edit="g1">Setiap pemilik bisnes ada idea <span class="circ pw">gempak.<svg viewBox="0 0 200 80" preserveAspectRatio="none"><path d="M30 54 C 16 26, 92 6, 160 14 C 198 19, 200 54, 158 67 C 110 82, 28 76, 13 54 C 4 38, 42 17, 96 15"/></svg></span></h1>
   </section>
 
   <!-- 7 · Sudahnya, template -->
@@ -432,7 +435,7 @@
       <div class="txt">
         <h2 class="h2 rise" data-edit="t1">Tapi nak terangkan pada designer…</h2>
         <h2 class="h2 frag grey" style="margin-top:2.4vh" data-edit="t2">…tak reti.</h2>
-        <h2 class="h2 frag f-tpl" style="margin-top:5vh" data-edit="t3">Sudahnya? Ikut <span class="blue">template.</span></h2>
+        <h2 class="h2 frag f-tpl" style="margin-top:5vh" data-edit="t3">Sudahnya? Ikut <span class="pw">template.</span></h2>
       </div>
       <div class="vis">
         <div class="card wire" aria-hidden="true">
@@ -450,14 +453,14 @@
 
   <!-- 8 · Apa yang kita nak -->
   <section class="slide" data-title="Apa kita nak">
-    <h2 class="h2 rise" style="color:var(--ink2);font-weight:500" data-edit="w1">Kita bukan nak website cantik saja.</h2>
-    <h2 class="h2 frag" style="margin-top:3vh;max-width:22ch" data-edit="w2">Kita nak sesuatu yang kita bangga tunjuk pada pelanggan.</h2>
-    <h1 class="h1 frag" style="margin-top:7vh;max-width:none" data-edit="w3">Dan paling penting — yang boleh <span class="circ">menjual.<svg viewBox="0 0 200 80" preserveAspectRatio="none"><path d="M30 54 C 16 26, 92 6, 160 14 C 198 19, 200 54, 158 67 C 110 82, 28 76, 13 54 C 4 38, 42 17, 96 15"/></svg></span></h1>
+    <h2 class="h2 rise" style="color:var(--ink2);font-weight:500" data-edit="w1">Kita bukan nak website <span class="strike">cantik</span> saja.</h2>
+    <h2 class="h2 frag" style="margin-top:3vh;max-width:22ch" data-edit="w2">Kita nak sesuatu yang kita <span class="pw">bangga</span> tunjuk pada pelanggan.</h2>
+    <h1 class="h1 frag" style="margin-top:7vh;max-width:none" data-edit="w3">Dan paling penting — yang boleh <span class="circ pw">menjual.<svg viewBox="0 0 200 80" preserveAspectRatio="none"><path d="M30 54 C 16 26, 92 6, 160 14 C 198 19, 200 54, 158 67 C 110 82, 28 76, 13 54 C 4 38, 42 17, 96 15"/></svg></span></h1>
   </section>
 
   <!-- 9 · Lima alat -->
   <section class="slide alt" data-title="Lima alat">
-    <h1 class="h1 rise" data-edit="l1">Lima alat untuk jual satu produk.</h1>
+    <h1 class="h1 rise" data-edit="l1"><span class="pw">Lima alat</span> untuk jual satu produk.</h1>
     <div class="pills stagger">
       <span class="pill">Page builder</span><span class="pill">Design app</span><span class="pill">Payment gateway</span><span class="pill">Borang order</span><span class="pill">Spreadsheet</span>
     </div>
@@ -467,12 +470,12 @@
 
   <!-- 10 · Menongkah arus -->
   <section class="slide dark" data-title="Menongkah arus">
-    <h1 class="h-xl rise" data-edit="m1">Jadi kami menongkah arus.</h1>
+    <h1 class="h-xl rise" data-edit="m1">Jadi kami <span class="pw">menongkah arus.</span></h1>
   </section>
 
   <!-- 11 · Kuasa luar biasa -->
   <section class="slide" data-title="AI">
-    <h2 class="h2 rise" style="max-width:20ch" data-edit="k1">Hari ini, semua orang ada kuasa luar biasa.</h2>
+    <h2 class="h2 rise" style="max-width:20ch" data-edit="k1">Hari ini, <span class="pw">semua orang</span> ada kuasa luar biasa.</h2>
     <div class="frag" style="margin-top:4vh">
       <div class="mega blue" style="font-size:clamp(6rem,15vw,18rem)" data-edit="k2">AI.</div>
       <div class="pills" style="margin-top:3vh">
@@ -485,8 +488,8 @@
   <section class="slide alt" data-title="Artis">
     <div class="split">
       <div class="txt">
-        <h1 class="h1 rise" data-edit="a1">Cakap saja apa yang anda bayangkan.</h1>
-        <p class="sub frag" style="font-size:clamp(1.4rem,2.4vw,2.8rem);color:var(--blue);font-weight:500;letter-spacing:-.02em" data-edit="a2">Anda kini seorang artis.</p>
+        <h1 class="h1 rise" data-edit="a1">Cakap saja apa yang anda <span class="pw">bayangkan.</span></h1>
+        <p class="sub frag" style="font-size:clamp(1.4rem,2.4vw,2.8rem);color:var(--blue);font-weight:500;letter-spacing:-.02em" data-edit="a2">Anda kini seorang <b style="font-weight:700">artis.</b></p>
       </div>
       <div class="vis rise"><div class="shot" style="width:100%;aspect-ratio:1240/900"><img src="img/chat-type.jpg" alt="Chat: Buatkan sales page untuk Kek Lapis Sarawak"></div></div>
     </div>
@@ -497,7 +500,7 @@
   <!-- 13 · Tiga perkara -->
   <section class="slide" data-title="Tiga perkara">
     <div style="width:100%;max-width:1300px;display:flex;flex-direction:column;align-items:flex-start;text-align:left">
-      <p class="label rise" style="font-size:clamp(1.1rem,1.6vw,1.8rem)" data-edit="tp0">Hari ini, kami perkenalkan tiga perkara.</p>
+      <p class="label rise" style="font-size:clamp(1.1rem,1.6vw,1.8rem)" data-edit="tp0">Hari ini, kami perkenalkan <b style="color:var(--blue);font-weight:700">tiga perkara.</b></p>
       <div class="three">
         <h2 class="h2 frag" data-edit="tp1"><span class="n">01</span>Pembina sales page.</h2>
         <h2 class="h2 frag" data-edit="tp2"><span class="n">02</span>Kaunter bayaran.</h2>
@@ -513,8 +516,8 @@
     </div>
     <div class="swap">
       <h1 class="h1 frag" data-edit="s1">Dapat tangkap?</h1>
-      <h1 class="h1 frag" data-edit="s2">Ini bukan tiga produk.</h1>
-      <h1 class="h-xl frag" data-edit="s3">Ini <span class="circ">satu.<svg viewBox="0 0 200 80" preserveAspectRatio="none"><path d="M30 54 C 16 26, 92 6, 160 14 C 198 19, 200 54, 158 67 C 110 82, 28 76, 13 54 C 4 38, 42 17, 96 15"/></svg></span></h1>
+      <h1 class="h1 frag" data-edit="s2">Ini <span class="pw">bukan</span> tiga produk.</h1>
+      <h1 class="h-xl frag" data-edit="s3">Ini <span class="circ pw">satu.<svg viewBox="0 0 200 80" preserveAspectRatio="none"><path d="M30 54 C 16 26, 92 6, 160 14 C 198 19, 200 54, 158 67 C 110 82, 28 76, 13 54 C 4 38, 42 17, 96 15"/></svg></span></h1>
     </div>
   </section>
 
@@ -537,7 +540,7 @@
 
   <!-- 17 · Sembang → Terbit → Live -->
   <section class="slide" data-title="Sembang Terbit Live">
-    <h1 class="h1 rise" style="max-width:none" data-edit="stl">Sembang. Terbit. <span class="blue">Live.</span></h1>
+    <h1 class="h1 rise" style="max-width:none" data-edit="stl">Sembang. Terbit. <span class="pw">Live.</span></h1>
     <div class="trio">
       <figure><div class="shot"><img src="img/chat-draft.jpg" alt="Sales page draft dicipta dalam chat" style="object-position:0% 50%"></div><figcaption><span>01</span>Sembang</figcaption></figure>
       <figure><div class="shot"><img src="img/publish.jpg" alt="Copy BM, gambar, harga & promo siap" style="object-position:30% 50%"></div><figcaption><span>02</span>Terbit</figcaption></figure>
@@ -547,7 +550,7 @@
 
   <!-- 18 · Cara anda sendiri -->
   <section class="slide alt" data-title="Cara anda">
-    <h1 class="h1 rise" data-edit="ca1">Cara anda sendiri.</h1>
+    <h1 class="h1 rise" data-edit="ca1">Cara <span class="pw">anda sendiri.</span></h1>
     <div class="opts rise">
       <div class="card opt"><span class="k">Untuk yang suka reka</span><b data-edit="ca2">Studio</b><p data-edit="ca2s">Templat, tema &amp; AI. Klik, ubah, terbit.</p></div>
       <div class="card opt"><span class="k">Untuk yang ada design sendiri</span><b data-edit="ca3">HTML anda sendiri</b><p data-edit="ca3s">Tampal page yang AI anda tulis. Kami jualkan.</p></div>
@@ -570,8 +573,8 @@
   <section class="slide" data-title="FPX">
     <div class="split">
       <div class="txt">
-        <h1 class="h1 rise" data-edit="f1">FPX, siap terbina.</h1>
-        <p class="sub rise" data-edit="f2">Tiada gateway untuk diintegrasi. Berjalan atas Herepay — aktif sebaik perniagaan anda disahkan.</p>
+        <h1 class="h1 rise" data-edit="f1"><span class="pw">FPX,</span> siap terbina.</h1>
+        <p class="sub rise" data-edit="f2"><b style="color:var(--ink);font-weight:600">Tiada gateway</b> untuk diintegrasi. Berjalan atas Herepay — aktif sebaik perniagaan anda disahkan.</p>
       </div>
       <div class="vis rise">
         <div class="toast-stack">
@@ -585,7 +588,7 @@
 
   <!-- 21 · Setiap order -->
   <section class="slide alt" data-title="Setiap order">
-    <h1 class="h1 rise" style="max-width:none" data-edit="o1">Setiap order, langkah demi langkah.</h1>
+    <h1 class="h1 rise" style="max-width:none" data-edit="o1"><span class="pw">Setiap order,</span> langkah demi langkah.</h1>
     <div class="tl">
       <div class="step"><div class="dot"></div><b data-edit="o2">Dibayar</b><span data-edit="o2s">FPX masuk, order direkod</span></div>
       <div class="step"><div class="dot"></div><b data-edit="o3">Dihantar</b><span data-edit="o3s">Status dikemas kini</span></div>
@@ -608,7 +611,7 @@
   <section class="slide" data-title="Setiap sen">
     <div class="split" style="align-items:center">
       <div class="txt">
-        <h1 class="h1 rise" data-edit="sn1">Setiap sen, diakaunkan.</h1>
+        <h1 class="h1 rise" data-edit="sn1"><span class="pw">Setiap sen,</span> diakaunkan.</h1>
         <div class="ledger rise" style="margin-top:4vh">
           <div class="lr" style="padding-left:0"><span class="n">01</span><b data-edit="sn2">Order dipadankan dengan payout Herepay, setiap hari.</b></div>
           <div class="lr" style="padding-left:0"><span class="n">02</span><b data-edit="sn3">Jualan, caj &amp; yuran — sebelah-menyebelah.</b></div>
@@ -621,7 +624,7 @@
 
   <!-- 24 · Iklan -->
   <section class="slide alt" data-title="Iklan">
-    <h1 class="h1 rise" style="max-width:20ch" data-edit="ik1">Iklan yang tahu apa yang terjual.</h1>
+    <h1 class="h1 rise" style="max-width:20ch" data-edit="ik1">Iklan yang tahu apa yang <span class="pw">terjual.</span></h1>
     <div class="pills stagger">
       <span class="pill">Meta Pixel</span><span class="pill">TikTok Pixel</span><span class="pill">Google Tag</span>
     </div>
@@ -630,7 +633,7 @@
 
   <!-- 25 · Penjual Malaysia -->
   <section class="slide" data-title="Penjual Malaysia">
-    <h1 class="h1 rise" style="max-width:none" data-edit="my1">Dibina untuk penjual Malaysia.</h1>
+    <h1 class="h1 rise" style="max-width:none" data-edit="my1">Dibina untuk <span class="pw">penjual Malaysia.</span></h1>
     <div class="card urlbar rise"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><span class="you" data-edit="my2">namaanda</span>.heresell.my</span></div>
     <div class="pills rise">
       <span class="pill">BM atau English</span><span class="pill">FPX</span><span class="pill">Agen &amp; dropship</span>
@@ -641,7 +644,7 @@
 
   <!-- 26 · Ringkasan -->
   <section class="slide alt" data-title="Ringkasan">
-    <h1 class="h1 rise" style="max-width:none" data-edit="r0">Satu Heresell. Tiga kerja.</h1>
+    <h1 class="h1 rise" style="max-width:none" data-edit="r0">Satu Heresell. <span class="pw">Tiga kerja.</span></h1>
     <div class="recap rise">
       <div class="card"><span class="n">01</span><b data-edit="r1">Dapatkan.</b><p data-edit="r1s">Cipta produk &amp; sales page.</p><span class="k">Pra-jualan</span></div>
       <div class="card"><span class="n">02</span><b data-edit="r2">Kekalkan.</b><p data-edit="r2s">Bayaran &amp; checkout.</p><span class="k">Semasa jualan</span></div>
@@ -656,7 +659,7 @@
 
   <!-- 28 · Satu lagi perkara -->
   <section class="slide dark" data-title="Satu lagi">
-    <h1 class="h-xl rise" data-edit="ol1">Oh… satu lagi perkara.</h1>
+    <h1 class="h-xl rise" data-edit="ol1">Oh… <span class="pw">satu lagi perkara.</span></h1>
   </section>
 
   <!-- 29 · Tawaran -->
@@ -671,7 +674,7 @@
   <section class="slide" data-title="Mula menjual">
     <div class="split">
       <div class="txt">
-        <h1 class="h1 rise" data-edit="cta1">Mula menjual malam ini.</h1>
+        <h1 class="h1 rise" data-edit="cta1">Mula menjual <span class="pw">malam ini.</span></h1>
         <p class="sub rise" style="color:var(--blue);font-weight:500" data-edit="cta2">heresell.my/register</p>
         <div class="steps3 rise">
           <div><span>1</span>Daftar</div><div><span>2</span>Tambah produk</div><div><span>3</span>Sahkan SSM &amp; bank</div>
