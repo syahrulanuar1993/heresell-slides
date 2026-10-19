@@ -269,6 +269,20 @@
     .tl{grid-template-columns:1fr 1fr;row-gap:4vh;}
     .tl::before,.tl::after{display:none;}
   }
+
+  /* ---------- EDIT MODE (press E, or ?edit=1) ---------- */
+  .toolbar,.editnote{display:none!important;}
+  body.edit-on .deck{bottom:112px;}
+  body.edit-on .swap{display:flex;flex-direction:column;align-items:center;gap:2.4vh;}
+  body.edit-on .swap>*,body.edit-on .swap>*:has(~ .frag.on){opacity:1!important;transform:none!important;}
+  body.edit-on .rise,body.edit-on .frag{opacity:1!important;transform:none!important;transition:none!important;}
+  body.edit-on .wire{opacity:1;transform:none;}
+  body.edit-on .pills.stagger .pill,body.edit-on .trio figure{opacity:1!important;transform:none!important;animation:none!important;}
+  body.edit-on .circ path{stroke-dashoffset:0!important;animation:none!important;}
+  body.edit-on .progress,body.edit-on .counter,body.edit-on .nav-hint{display:none;}
+  body.edit-on [contenteditable="true"]{cursor:text;}
+  body.edit-on [contenteditable="true"]:hover{box-shadow:0 0 0 2px rgba(23,75,215,.25);border-radius:8px;}
+  body.edit-on [contenteditable="true"]:focus{box-shadow:0 0 0 2px rgba(23,75,215,.7);border-radius:8px;background:rgba(255,255,255,.5);}
 </style>
 <script>
   /* password gate — remembers unlock on this browser */
@@ -853,7 +867,8 @@ restore();
 
 /* ===== EDIT MODE (open with /edit) ===== */
 if(new URLSearchParams(location.search).get('edit')==='1'){
-  document.body.style.caretColor='#1455E8';
+  document.body.classList.add('edit-on');
+  document.body.style.caretColor='#174BD7';
 
   var deck=document.getElementById('deck');
   var selected = new Set();
@@ -922,7 +937,7 @@ if(new URLSearchParams(location.search).get('edit')==='1'){
   bar.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#0B1B56;color:#fff;padding:10px 14px;display:flex;flex-direction:column;gap:8px;font-family:Inter,sans-serif;font-size:13px;box-shadow:0 -8px 30px rgba(0,0,0,.3)';
   bar.innerHTML=
     '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">'+
-    '<span style="opacity:.8">MOD EDIT'+(restored?' · <b style="color:#7ED9A7">draf dipulihkan</b> <button id="dropDraft" style="background:none;border:none;color:#fff;opacity:.7;cursor:pointer;font-size:12px;text-decoration:underline">buang draf</button>':'')+'</span>'+
+    '<span style="opacity:.85">MOD EDIT · klik mana-mana teks untuk ubah · auto-simpan dalam browser ini'+(restored?' · <b style="color:#7ED9A7">draf dipulihkan</b> <button id="dropDraft" style="background:none;border:none;color:#fff;opacity:.7;cursor:pointer;font-size:12px;text-decoration:underline">buang draf</button>':'')+'</span>'+
     '<button id="gridBtn" style="margin-left:auto;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.3);padding:9px 14px;border-radius:10px;font-weight:700;cursor:pointer;font-size:13px">▦ Grid</button>'+
     '<button id="insImg" style="background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.3);padding:9px 14px;border-radius:10px;font-weight:700;cursor:pointer;font-size:13px">🖼 Imej</button>'+
     '<button id="dlHtml" style="background:#1455E8;color:#fff;border:none;padding:9px 16px;border-radius:10px;font-weight:700;cursor:pointer;font-size:13px">Muat Turun HTML</button>'+
@@ -1258,6 +1273,9 @@ if(new URLSearchParams(location.search).get('edit')==='1'){
 
   document.getElementById('dlHtml').onclick=function(){
     var clone=document.documentElement.cloneNode(true);
+    clone.classList.remove('unlocked');
+    var cbd=clone.querySelector('body'); if(cbd){ cbd.classList.remove('edit-on','editing','is-fs'); }
+    clone.querySelectorAll('.wire').forEach(function(w){w.removeAttribute('style');});
     ['#editBar','#fsBtn','#editGrid','#dropIndicator'].forEach(function(s){
       var el=clone.querySelector(s); if(el) el.remove();
     });
@@ -1278,11 +1296,37 @@ if(new URLSearchParams(location.search).get('edit')==='1'){
     var blob=new Blob([html],{type:'text/html'});
     var a=document.createElement('a');
     a.href=URL.createObjectURL(blob);
-    a.download='heresell-keynote-edited.html';
+    a.download='index.html';
     a.click();
   };
 }
 </script>
 
 
+<script>
+/* ---- edit helpers: E to edit, slide number in the URL, exit button ---- */
+(function(){
+  var q=new URLSearchParams(location.search), editing=q.get('edit')==='1';
+  var _show=show;
+  show=function(n){ _show(n); try{ history.replaceState(null,'',location.pathname+location.search+'#'+(i+1)); }catch(e){} };
+  var h=parseInt((location.hash||'').slice(1),10);
+  if(!isNaN(h)&&h>1){ try{ show(h-1); if(window.__edit) __edit.rebuildUI(); }catch(e){} }
+  document.addEventListener('keydown',function(e){
+    if(e.target.isContentEditable||e.target.tagName==='INPUT') return;
+    if((e.key==='e'||e.key==='E') && !editing && document.documentElement.classList.contains('unlocked')){
+      location.href=location.pathname+'?edit=1#'+(i+1);
+    }
+  });
+  if(editing){
+    var dl=document.getElementById('dlHtml'); if(dl) dl.textContent='⬇ Muat turun index.html';
+    var row=document.getElementById('editBar') && document.getElementById('editBar').firstElementChild;
+    if(row){
+      var ex=document.createElement('button'); ex.textContent='✕ Keluar edit';
+      ex.style.cssText='background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.3);padding:9px 14px;border-radius:10px;font-weight:700;cursor:pointer;font-size:13px';
+      ex.onclick=function(){ location.href=location.pathname+'#'+(i+1); };
+      row.appendChild(ex);
+    }
+  }
+})();
+</script>
 </body></html>
