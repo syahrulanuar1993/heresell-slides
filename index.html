@@ -638,8 +638,80 @@
   .qrcard .qr img,.qrcard .qr canvas{display:block;width:clamp(260px,52vh,600px)!important;height:auto!important;}
   @media (max-width:700px){ .qrcard .qr img,.qrcard .qr canvas{width:min(68vw,42vh)!important;} }
 </style>
+<script>
+  /* password gate — remembers unlock on this browser */
+  window.__GATE={K:'heresell-unlock-v1',H:'40011d486762c81df99b7f3862c1369476c0fd87a784a75069fd6889d8f35dc9'};
+  try{ if(localStorage.getItem(__GATE.K)===__GATE.H) document.documentElement.classList.add('unlocked'); }catch(e){}
+</script>
+<style>
+  html:not(.unlocked) #deck, html:not(.unlocked) .progress, html:not(.unlocked) .counter,
+  html:not(.unlocked) .nav-hint, html:not(.unlocked) .toolbar, html:not(.unlocked) .editnote{visibility:hidden;}
+  html:not(.unlocked) #fsBtn{display:none!important;}
+  html.unlocked #gate{display:none;}
+  #gate{
+    position:fixed;inset:0;z-index:100010;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(80% 90% at 20% 10%,#EAF2FF 0%,#F5F8FF 55%,#DCE8FF 100%);
+    font-family:'Plus Jakarta Sans','Inter',-apple-system,sans-serif;padding:24px;
+  }
+  #gate .gbox{width:min(420px,100%);display:flex;flex-direction:column;align-items:center;text-align:center;}
+  #gate .gmark{font-weight:800;font-size:clamp(2.6rem,6vw,4rem);letter-spacing:-.04em;line-height:1;color:#1455E8;margin-bottom:3.2vh;}
+  #gate .gmark span{color:#0B1B56;}
+  #gate .gsub{font-weight:700;font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:#5D8FF7;margin-bottom:4vh;}
+  #gate form{width:100%;display:flex;gap:10px;}
+  #gate input{
+    flex:1;min-width:0;padding:15px 20px;border-radius:999px;border:1px solid #E8EDF5;background:#fff;
+    font:600 1rem 'Plus Jakarta Sans',sans-serif;color:#0B1B56;outline:none;
+    box-shadow:0 10px 26px rgba(11,27,86,.07);
+  }
+  #gate input:focus{border-color:#1455E8;box-shadow:0 0 0 4px rgba(20,85,232,.15);}
+  #gate button{
+    padding:15px 24px;border-radius:999px;border:none;background:#1455E8;color:#fff;cursor:pointer;
+    font:700 .95rem 'Plus Jakarta Sans',sans-serif;letter-spacing:.02em;box-shadow:0 12px 30px rgba(20,85,232,.3);
+  }
+  #gate .gerr{min-height:1.4em;margin-top:2vh;font-weight:600;font-size:.85rem;color:#D14343;}
+  #gate.shake form{animation:gshake .4s;}
+  @keyframes gshake{0%,100%{transform:none}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+</style>
 </head>
 <body>
+<div id="gate">
+  <div class="gbox">
+    <div class="gmark">heresell<span>.</span></div>
+    <div class="gsub">Akses peribadi</div>
+    <form id="gateForm" autocomplete="off">
+      <input id="gatePw" type="password" placeholder="Kata laluan" aria-label="Kata laluan" autofocus>
+      <button type="submit">Masuk</button>
+    </form>
+    <div class="gerr" id="gateErr"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var root=document.documentElement, inp=document.getElementById('gatePw'), gate=document.getElementById('gate');
+  function locked(){ return !root.classList.contains('unlocked'); }
+  /* while locked, keys never reach the deck navigation */
+  window.addEventListener('keydown',function(e){ if(locked() && e.target!==inp) e.stopPropagation(); },true);
+  inp.addEventListener('keydown',function(e){ e.stopPropagation(); });
+  async function sha(s){
+    var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
+    return [...new Uint8Array(b)].map(function(x){return x.toString(16).padStart(2,'0')}).join('');
+  }
+  document.getElementById('gateForm').addEventListener('submit',async function(e){
+    e.preventDefault(); e.stopPropagation();
+    var h=''; try{ h=await sha(inp.value); }catch(err){}
+    if(h===window.__GATE.H){
+      try{ localStorage.setItem(window.__GATE.K,h); }catch(err){}
+      root.classList.add('unlocked'); inp.value=''; inp.blur();
+    }else{
+      document.getElementById('gateErr').textContent='Kata laluan salah. Cuba lagi.';
+      gate.classList.remove('shake'); void gate.offsetWidth; gate.classList.add('shake');
+      inp.select();
+    }
+  });
+  if(locked()) setTimeout(function(){ try{inp.focus();}catch(e){} },50);
+})();
+</script>
+
 
 <div class="toolbar">
   <button id="editBtn" onclick="toggleEdit()">✎ EDIT</button>
