@@ -9,7 +9,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap');
 
   :root{
-    --blue:#1455E8;
+    --blue:#174BD7;
     --navy:#0B1B56;
     --soft:#EAF2FF;
     --mist:#F5F8FF;
@@ -637,6 +637,11 @@
   .qrcard{flex-shrink:0;background:var(--white);border-radius:36px;padding:clamp(18px,2.2vw,34px);box-shadow:0 30px 80px rgba(11,27,86,.16);}
   .qrcard .qr img,.qrcard .qr canvas{display:block;width:clamp(260px,52vh,600px)!important;height:auto!important;}
   @media (max-width:700px){ .qrcard .qr img,.qrcard .qr canvas{width:min(68vw,42vh)!important;} }
+  /* 7-word cascade timing */
+  .slide.active .cascade .w:nth-child(6){animation-delay:1.05s}
+  .slide.active .cascade .w:nth-child(7){animation-delay:1.35s}
+  /* trinity punch revealed as its own fragment */
+  .pilwrap .trinity-punch.frag.on{opacity:1;}
 </style>
 <script>
   /* password gate — remembers unlock on this browser */
@@ -676,7 +681,7 @@
 <body>
 <div id="gate">
   <div class="gbox">
-    <div class="gmark">heresell<span>.</span></div>
+    <div class="gmark" style="color:#0B1B56">Heresell</div>
     <div class="gsub">Akses peribadi</div>
     <form id="gateForm" autocomplete="off">
       <input id="gatePw" type="password" placeholder="Kata laluan" aria-label="Kata laluan" autofocus>
@@ -722,7 +727,7 @@
   Mod edit aktif — klik mana-mana teks untuk ubah. Tekan <b>SIMPAN</b> untuk kekalkan.
   <div class="qrurlbox">
     URL untuk kod QR:
-    <input id="qrUrl" type="text" value="https://heresell.my" onchange="renderQRs()">
+    <input id="qrUrl" type="text" value="https://heresell.my/register" onchange="renderQRs()">
   </div>
 </div>
 
@@ -730,86 +735,73 @@
 
   <!-- 1 · WELCOME -->
   <section class="slide bg-mist active" style="gap:0">
-    <div class="wordmark rise" style="font-size:clamp(4rem,12vw,13rem);margin-bottom:5vh">heresell<span style="color:var(--navy)">.</span></div>
+    <div class="wordmark rise" style="font-size:clamp(4rem,12vw,13rem);margin-bottom:5vh;color:var(--navy)">Heresell</div>
     <p class="eyebrow rise" data-edit="wlc1" style="font-size:clamp(1.1rem,1.8vw,2rem);letter-spacing:.3em;margin:0">SELAMAT DATANG</p>
   </section>
 
-  <!-- 1b · HERESELL FILM (plays with sound on arrival, restarts each visit) -->
+  <!-- 2 · HERESELL FILM (plays with sound on arrival, restarts each visit) -->
   <section class="slide bg-navy">
     <video class="autovid showvid" src="heresell-film.mp4" poster="heresell-film-poster.jpg" playsinline preload="auto"></video>
   </section>
 
-  <!-- 2 · COVER -->
+  <!-- 3 · COVER -->
   <section class="slide cover bg-mist">
     <div class="cover-left">
-      <div class="wordmark rise" data-edit="cvlogo">heresell<span style="color:var(--navy)">.</span></div>
+      <div class="wordmark rise" style="color:var(--navy)" data-edit="cvlogo">Heresell</div>
       <div class="cover-eyebrow rise" data-edit="cvevent">[NAMA ACARA] &nbsp;·&nbsp; 19 OKT 2026</div>
-      <h1 class="cover-head rise"><span class="glow" style="color:var(--blue)" data-edit="cvl1">Kedai anda,</span><br><span data-edit="cvl2">siap dengan satu chat.</span></h1>
+      <h1 class="cover-head rise"><span class="glow" style="color:var(--blue)" data-edit="cvl1">Sales pages</span><br><span data-edit="cvl2">that sell.</span></h1>
       <div class="cover-trust rise">
-        <span class="ct" data-edit="cvb1c">Dikendalikan oleh</span>
-        <span class="ct" style="color:var(--navy)" data-edit="cvb2c">Herepay Sdn Bhd</span>
+        <span class="ct" data-edit="cvb1c">Bayaran FPX</span>
+        <span class="ctsep">·</span>
+        <span class="ct" data-edit="cvb2c">Dikuasakan oleh</span><span class="ct" style="color:var(--navy)" data-edit="cvb3c">Herepay</span>
       </div>
     </div>
     <div class="cover-phone rise">
       <div class="phone" style="width:clamp(220px,17vw,300px);max-height:78vh">
         <div class="bar" style="width:46%"></div>
-        <div class="bar" style="width:72%;opacity:.6"></div>
-        <div class="prod">Produk Anda<small>RM 49.00 · Stok 24</small></div>
-        <div class="prod">Sales Page<small>Diterbitkan ✓</small></div>
-        <div class="hello">Order baru! 🎉<small>RM 49.00 baru masuk</small></div>
+        <div class="prod">Dapur Lapis<small>Kek Lapis Sarawak · RM 45.00</small></div>
+        <div class="prod">Promo Raya −18%<small>Sales page · Diterbitkan ✓</small></div>
+        <div class="hello">New order #1024 🎉<small>RM 45.00 · Payment received · FPX</small></div>
         <div class="pay">Beli Sekarang</div>
-        <div class="ok">✓ Bayaran diterima</div>
+        <div class="ok">✓ Bayar dengan FPX</div>
       </div>
     </div>
   </section>
 
-  <!-- 3 · HOOK -->
+  <!-- 4 · HOOK -->
   <section class="slide bg-navy">
-    <p class="cascade" data-edit="hook"><span class="w">Bina</span> <span class="w">kedai</span> <span class="w">online</span> <span class="w">hanya</span> <span class="w">dengan</span> <span class="w hl">berbual&nbsp;💬</span></p>
+    <p class="cascade" data-edit="hook"><span class="w">Sales</span> <span class="w">page</span> <span class="w">tak</span> <span class="w">patut</span> <span class="w">ambil</span> <span class="w">masa</span> <span class="w hl">seminggu.</span></p>
   </section>
 
-  <!-- 4 · THE PAIN (reveal one at a time) -->
+  <!-- 5 · THE PAIN (reveal one at a time) -->
   <section class="slide bg-mist">
-    <p class="eyebrow rise" data-edit="painE">PENIAGA HARI INI PENAT DENGAN</p>
+    <p class="eyebrow rise" data-edit="painE">TERLALU BANYAK TOOLS UNTUK JUAL SATU PRODUK</p>
     <div class="stack">
-      <h2 class="hero frag" data-edit="pain1">WEBSITE MAHAL</h2>
-      <h2 class="hero frag" data-edit="pain2">SETUP BERMINGGU</h2>
-      <h2 class="hero frag"><span class="blue" data-edit="pain3">JUALAN TAK MASUK</span></h2>
+      <h2 class="hero frag" data-edit="pain1">PAGE BUILDER</h2>
+      <h2 class="hero frag" data-edit="pain2">PAYMENT GATEWAY</h2>
+      <h2 class="hero frag"><span class="blue" data-edit="pain3">SPREADSHEET ORDER</span></h2>
     </div>
-  </section>
-
-  <!-- 5 · TEASE -->
-  <section class="slide bg-navy">
-    <h1 class="hero rise tease-q" data-edit="tq1">Kalau semua tu boleh siap dalam <span style="color:#5D8FF7">satu chat</span>?</h1>
-    <p class="tease-sub frag" data-edit="tq2">boleh. malam ni kami tunjuk.</p>
   </section>
 
   <!-- 6 · REVEAL -->
   <section class="slide bg-soft">
-    <p class="eyebrow rise" data-edit="revE">Memperkenalkan</p>
-    <h1 class="hero mega rise"><span class="glow" data-edit="revH">heresell.</span></h1>
-    <p class="support rise" data-edit="revS">Kedai online &amp; sales page — dibina dengan AI.</p>
+    <p class="eyebrow rise" data-edit="revE">Satu tempat untuk semuanya</p>
+    <h1 class="hero mega rise"><span class="glow" data-edit="revH">Heresell</span></h1>
+    <p class="support rise" data-edit="revS">Bina sales page. Terima bayaran FPX. Jejak setiap order.</p>
   </section>
 
-  <!-- 7 · MCP -->
-  <section class="slide bg-navy proofbg">
-    <p class="eyebrow rise" data-edit="mcpE">Disambung terus melalui MCP</p>
-    <h1 class="hero rise" data-edit="mcpH">HERESELL ×<br><span style="color:#5D8FF7">AI CHAT</span></h1>
-    <p class="support rise" data-edit="mcpS">Urus kedai, produk &amp; jualan — sambil berbual.</p>
-  </section>
-
-  <!-- 8 · THE FORMULA -->
+  <!-- 7 · CHAT → PUBLISH → SELL -->
   <section class="slide bg-mist">
     <div class="procwrap">
-      <h1 class="hero" style="font-size:clamp(2.2rem,5vw,5.6rem)" data-edit="fxH">DARI CHAT<br><span class="blue">TERUS JADI JUALAN.</span></h1>
+      <h1 class="hero" style="font-size:clamp(2.2rem,5vw,5.6rem)" data-edit="fxH">SALES PAGE LIVE<br><span class="blue">DALAM SATU CHAT.</span></h1>
       <div class="procrow">
         <div class="proc">
           <svg viewBox="0 0 120 110">
             <g class="an-bag"><rect x="14" y="18" width="62" height="38" rx="12" fill="#0B1B56"></rect><path d="M26 54 l-4 13 l15 -13z" fill="#0B1B56"></path><rect x="24" y="30" width="38" height="5" rx="2.5" fill="#fff" opacity=".85"></rect><rect x="24" y="40" width="24" height="5" rx="2.5" fill="#fff" opacity=".6"></rect></g>
-            <g class="an-pill"><rect x="48" y="58" width="60" height="32" rx="12" fill="#1455E8"></rect><path d="M94 88 l5 11 l-15 -11z" fill="#1455E8"></path><circle cx="64" cy="74" r="3.6" fill="#fff"></circle><circle cx="78" cy="74" r="3.6" fill="#fff"></circle><circle cx="92" cy="74" r="3.6" fill="#fff"></circle></g>
+            <g class="an-pill"><rect x="48" y="58" width="60" height="32" rx="12" fill="#174BD7"></rect><path d="M94 88 l5 11 l-15 -11z" fill="#174BD7"></path><circle cx="64" cy="74" r="3.6" fill="#fff"></circle><circle cx="78" cy="74" r="3.6" fill="#fff"></circle><circle cx="92" cy="74" r="3.6" fill="#fff"></circle></g>
           </svg>
           <div class="sw" data-edit="fx1">BERBUAL</div>
-          <div class="pdesc" data-edit="fx1d">Beritahu AI apa yang anda jual</div>
+          <div class="pdesc" data-edit="fx1d">“Apa yang kita jual hari ni?”</div>
         </div>
         <div class="procarrow">→</div>
         <div class="proc">
@@ -820,99 +812,192 @@
               <circle cx="27" cy="21" r="2.4" fill="#0B1B56"></circle><circle cx="35" cy="21" r="2.4" fill="#0B1B56"></circle>
               <rect x="28" y="38" width="64" height="24" rx="5" fill="#5D8FF7"></rect>
               <rect x="28" y="68" width="42" height="5" rx="2.5" fill="#0B1B56"></rect>
-              <rect x="28" y="78" width="30" height="10" rx="5" fill="#1455E8"></rect>
+              <rect x="28" y="78" width="30" height="10" rx="5" fill="#174BD7"></rect>
             </g>
             <g class="an-paycheck"><circle cx="98" cy="88" r="15" fill="#2DCB89"></circle><path d="M91 88 l5 5 l9 -10" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"></path></g>
           </svg>
           <div class="sw" data-edit="fx2">TERBIT</div>
-          <div class="pdesc" data-edit="fx2d">Landing page siap, sedia dikongsi</div>
+          <div class="pdesc" data-edit="fx2d">Copy BM, gambar, harga &amp; promo — siap</div>
         </div>
         <div class="procarrow">→</div>
         <div class="proc">
           <svg viewBox="0 0 120 110">
-            <g class="an-bag"><path d="M34 40 h52 l-6 52 h-40 z" fill="#0B1B56"></path><path d="M46 48 v-10 a14 14 0 0 1 28 0 v10" fill="none" stroke="#1455E8" stroke-width="5" stroke-linecap="round"></path></g>
-            <g class="an-pill"><rect x="8" y="14" width="48" height="20" rx="10" fill="#fff" stroke="#0B1B56" stroke-width="3"></rect><text x="32" y="29" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12.5" font-weight="800" fill="#0B1B56">RM49</text></g>
-            <g class="an-paycheck"><circle cx="92" cy="78" r="17" fill="#1455E8"></circle><path d="M84.5 78 l5.5 5.5 l10 -11" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path></g>
+            <g class="an-bag"><path d="M34 40 h52 l-6 52 h-40 z" fill="#0B1B56"></path><path d="M46 48 v-10 a14 14 0 0 1 28 0 v10" fill="none" stroke="#174BD7" stroke-width="5" stroke-linecap="round"></path></g>
+            <g class="an-pill"><rect x="8" y="14" width="48" height="20" rx="10" fill="#fff" stroke="#0B1B56" stroke-width="3"></rect><text x="32" y="29" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12.5" font-weight="800" fill="#0B1B56">RM45</text></g>
+            <g class="an-paycheck"><circle cx="92" cy="78" r="17" fill="#174BD7"></circle><path d="M84.5 78 l5.5 5.5 l10 -11" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path></g>
           </svg>
           <div class="sw" data-edit="fx3">JUAL</div>
-          <div class="pdesc" data-edit="fx3d">Pelanggan beli &amp; bayar terus</div>
+          <div class="pdesc" data-edit="fx3d">Pembeli bayar FPX, order terus masuk</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 9 · HUB -->
+  <!-- 8 · THREE WAYS TO BUILD -->
+  <section class="slide bg-navy">
+    <div class="pilwrap">
+      <h1 class="hero rise" style="font-size:clamp(1.9rem,4vw,4.4rem);color:#fff;margin-bottom:6vh" data-edit="w3h">Tiga cara bina <span style="color:#5D8FF7">sales page.</span></h1>
+      <div class="trinity">
+        <div class="tri frag">
+          <div class="tile tile-kew"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0 0 18c.8 0 1.5-.7 1.5-1.5 0-.4-.2-.7-.4-1-.2-.3-.4-.6-.4-1 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8zM6.5 12a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"></path></svg></div>
+          <div class="lbl" data-edit="w3a">Studio</div>
+        </div>
+        <div class="tri frag">
+          <div class="tile tile-keh"><svg viewBox="0 0 24 24"><path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"></path></svg></div>
+          <div class="lbl" data-edit="w3b">Page dari AI anda</div>
+        </div>
+        <div class="tri frag">
+          <div class="tile tile-sah"><svg viewBox="0 0 24 24"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM7 9h10v2H7V9zm6 5H7v-2h6v2zm4-6H7V6h10v2z"></path></svg></div>
+          <div class="lbl" data-edit="w3c">Claude &amp; ChatGPT</div>
+        </div>
+      </div>
+      <div class="trinity-punch frag" data-edit="w3p">Checkout sentiasa terkunci &amp; selamat.</div>
+    </div>
+  </section>
+
+  <!-- 9 · MCP -->
+  <section class="slide bg-navy proofbg">
+    <p class="eyebrow rise" data-edit="mcpE">Melalui MCP</p>
+    <h1 class="hero rise" style="font-size:clamp(2.6rem,6.4vw,7.4rem)" data-edit="mcpH">URUS KEDAI DARI<br><span style="color:#5D8FF7">CLAUDE &amp; CHATGPT.</span></h1>
+    <p class="support rise" data-edit="mcpS">Dalam BM atau English. Anda tetap pegang kawalan.</p>
+  </section>
+
+  <!-- 10 · OBJECTION: GATEWAY -->
+  <section class="slide bg-navy">
+    <h1 class="hero rise tease-q" data-edit="gw1">Perlu integrate <span style="color:#5D8FF7">payment gateway</span> ke?</h1>
+    <p class="tease-sub frag" data-edit="gw2">tak perlu. Heresell berjalan atas Herepay.</p>
+  </section>
+
+  <!-- 11 · NO CODE -->
+  <section class="slide bg-soft">
+    <p class="eyebrow rise" data-edit="ncE">Bayaran FPX</p>
+    <h1 class="hero rise" data-edit="ncH">TANPA KOD.<br><span class="blue">TANPA GATEWAY.</span></h1>
+    <p class="support rise" data-edit="ncS">FPX aktif sebaik Herepay sahkan perniagaan anda.</p>
+  </section>
+
+  <!-- 12 · HUB -->
   <section class="slide bg-mist">
     <div class="hubwrap">
       <div class="hcard c1">
-        <div class="hicon"><svg viewBox="0 0 24 24"><path d="M12 3l-2.5 1.5L7 3 3.5 5.5 5 8v4h14V8l1.5-2.5L17 3l-2.5 1.5z M5 12v8h14v-8"></path><path d="M8.5 16h1.6M11.6 16h1.6M14.7 16h1.6"></path></svg></div>
-        <div class="hx"><b data-edit="hc1a">Produk &amp; Varian</b><span data-edit="hc1b">Saiz, warna &amp; stok — tersusun.</span></div>
+        <div class="hicon"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="15" height="11" rx="2"></rect><path d="M2.5 9h15"></path><path d="M18.5 12.5l2.5 1v3c0 1.8-1.2 3-2.5 3.6-1.3-.6-2.5-1.8-2.5-3.6v-3z"></path><path d="M17.4 16.4l.9.9 1.6-1.8"></path></svg></div>
+        <div class="hx"><b data-edit="hc1a">Checkout</b><span data-edit="hc1b">FPX, voucher, diskaun, delivery atau pickup.</span></div>
       </div>
       <div class="hub">
         <div class="hubring"></div>
         <div class="hubdot d1"></div><div class="hubdot d2"></div><div class="hubdot d3"></div><div class="hubdot d4"></div>
         <svg viewBox="0 0 24 24"><path d="M4 4h16l1.2 4a2.6 2.6 0 0 1-2.6 2.6 2.6 2.6 0 0 1-2.6-2 2.6 2.6 0 0 1-2.7 2 2.6 2.6 0 0 1-2.6-2 2.6 2.6 0 0 1-2.7 2A2.6 2.6 0 0 1 5.4 8.5 2.6 2.6 0 0 1 2.8 8z"></path><path d="M5 11v9h14v-9M10 20v-5h4v5"></path></svg>
         <div class="ht" data-edit="hubt">Heresell</div>
-        <div class="hs" data-edit="hubs">Kedai. Sales page. Bayaran.<br>Semua di satu tempat.</div>
+        <div class="hs" data-edit="hubs">Semua jualan<br>di satu tempat.</div>
       </div>
       <div class="hcard c2">
-        <div class="hicon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 8h18"></path><circle cx="5.6" cy="6" r=".5"></circle><circle cx="7.6" cy="6" r=".5"></circle><path d="M6 11h12M6 14h7"></path><path d="M14 17h4"></path></svg></div>
-        <div class="hx"><b data-edit="hc2a">Sales Page</b><span data-edit="hc2b">Satu muka. Satu tawaran. Terus jual.</span></div>
+        <div class="hicon"><svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v10l-8 4-8-4z M4 8l8 4M12 12l8-4M12 12v10"></path><circle cx="17.5" cy="17.5" r="3.6"></circle><path d="M16 17.5l1.1 1.1 2-2.2"></path></svg></div>
+        <div class="hx"><b data-edit="hc2a">Order &amp; Pelanggan</b><span data-edit="hc2b">Tracking untuk pembeli, senarai &amp; kumpulan pelanggan.</span></div>
       </div>
       <div class="hcard c4">
-        <div class="hicon"><svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v10l-8 4-8-4z M4 8l8 4M12 12l8-4M12 12v10"></path><circle cx="17.5" cy="17.5" r="3.6"></circle><path d="M16 17.5l1.1 1.1 2-2.2"></path></svg></div>
-        <div class="hx"><b data-edit="hc3a">Pesanan &amp; Pelanggan</b><span data-edit="hc3b">Setiap order direkod automatik.</span></div>
+        <div class="hicon"><svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"></path><path d="M15 9a4 4 0 0 1 0 6M17.5 6.5a7.5 7.5 0 0 1 0 11"></path></svg></div>
+        <div class="hx"><b data-edit="hc3a">Iklan</b><span data-edit="hc3b">Pixel Meta, TikTok &amp; Google + tracking link.</span></div>
       </div>
       <div class="hcard c3">
-        <div class="hicon"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="15" height="11" rx="2"></rect><path d="M2.5 9h15"></path><path d="M18.5 12.5l2.5 1v3c0 1.8-1.2 3-2.5 3.6-1.3-.6-2.5-1.8-2.5-3.6v-3z"></path><path d="M17.4 16.4l.9.9 1.6-1.8"></path></svg></div>
-        <div class="hx"><b data-edit="hc4a">Bayaran Online</b><span data-edit="hc4b">Pelanggan bayar terus di halaman.</span></div>
+        <div class="hicon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><circle cx="17" cy="9" r="2.4"></circle><path d="M16 14.2c2.9.4 5 2.8 5 5.8"></path></svg></div>
+        <div class="hx"><b data-edit="hc4a">Agen &amp; Team</b><span data-edit="hc4b">Link sendiri untuk agen &amp; dropshipper.</span></div>
       </div>
     </div>
   </section>
 
-  <!-- 10 · OBJECTION -->
-  <section class="slide bg-navy">
-    <h1 class="hero rise tease-q" data-edit="ob1">Perlu pandai <span style="color:#5D8FF7">coding</span> ke?</h1>
-    <p class="tease-sub frag" data-edit="ob2">tak perlu langsung.</p>
+  <!-- 13 · ORDER FLOW -->
+  <section class="slide bg-mist">
+    <div class="procwrap">
+      <h1 class="hero" style="font-size:clamp(2.2rem,5vw,5.6rem)" data-edit="ofH">SETIAP ORDER,<br><span class="blue">LANGKAH DEMI LANGKAH.</span></h1>
+      <div class="procrow">
+        <div class="proc">
+          <svg viewBox="0 0 120 110">
+            <line x1="14" y1="86" x2="106" y2="86" stroke="#0B1B56" stroke-width="4" stroke-linecap="round"></line>
+            <g class="an-card"><rect x="30" y="46" width="60" height="38" rx="7" fill="#174BD7"></rect><rect x="30" y="56" width="60" height="8" fill="#0B1B56"></rect><rect x="38" y="72" width="22" height="5" rx="2.5" fill="#fff" opacity=".85"></rect></g>
+            <circle cx="96" cy="28" r="16" fill="#fff" stroke="#0B1B56" stroke-width="3.5"></circle>
+            <path class="an-check" d="M89 28 l5 5 l9 -10" fill="none" stroke="#174BD7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <div class="sw" data-edit="of1">DIBAYAR</div>
+          <div class="pdesc" data-edit="of1d">FPX masuk, order direkod</div>
+        </div>
+        <div class="procarrow">→</div>
+        <div class="proc">
+          <svg viewBox="0 0 120 110">
+            <g class="an-parcel">
+              <path d="M28 46 h64 v44 a6 6 0 0 1 -6 6 h-52 a6 6 0 0 1 -6 -6 z" fill="#0B1B56"></path>
+              <path d="M24 30 h72 l-4 16 h-64 z" fill="#174BD7"></path>
+              <rect x="54" y="46" width="12" height="50" fill="#5D8FF7"></rect>
+            </g>
+          </svg>
+          <div class="sw" data-edit="of2">DIHANTAR</div>
+          <div class="pdesc" data-edit="of2d">Tambah nombor tracking</div>
+        </div>
+        <div class="procarrow">→</div>
+        <div class="proc">
+          <svg viewBox="0 0 120 110">
+            <g class="an-bag"><path d="M60 16 a38 34 0 1 1 -22 62 l-16 6 l5 -15 a38 34 0 0 1 33 -53z" fill="#2DCB89"></path></g>
+            <g class="an-paycheck"><path d="M45 50 l10 10 l20 -20" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path></g>
+          </svg>
+          <div class="sw" data-edit="of3">DIMAKLUM</div>
+          <div class="pdesc" data-edit="of3d">Mesej pembeli terus di WhatsApp</div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- 11 · POSITIONING -->
+  <!-- 14 · EVERY CENT -->
+  <section class="slide bg-soft">
+    <p class="eyebrow rise" data-edit="ecE">Every cent, accounted for</p>
+    <h1 class="hero rise" style="font-size:clamp(2.6rem,6.4vw,7.4rem)" data-edit="ecH">SETIAP SEN,<br><span class="blue">DIAKAUNKAN.</span></h1>
+    <div style="display:flex;flex-direction:column;gap:2.2vh;margin-top:5vh">
+      <p class="support frag" style="margin:0;color:var(--navy)" data-edit="ec1">Order dipadankan dengan payout Herepay — setiap hari.</p>
+      <p class="support frag" style="margin:0;color:var(--navy)" data-edit="ec2">Jualan, caj bayaran &amp; yuran Heresell — sebelah-menyebelah.</p>
+      <p class="support frag" style="margin:0" data-edit="ec3"><b style="color:var(--blue)">Split payout ikut produk</b> ke bank berbeza.</p>
+    </div>
+  </section>
+
+  <!-- 15 · OWN NAME -->
+  <section class="slide bg-navy">
+    <h1 class="hero rise tease-q" data-edit="nm1">Boleh guna <span style="color:#5D8FF7">nama kedai sendiri?</span></h1>
+    <p class="tease-sub frag" data-edit="nm2">boleh — namaanda.heresell.my</p>
+  </section>
+
+  <!-- 16 · POSITIONING -->
   <section class="slide bg-soft">
     <p class="eyebrow rise" data-edit="posE">your store, your way</p>
     <h1 class="hero rise" data-edit="posH">KEDAI ANDA.<br><span class="blue">CARA ANDA.</span></h1>
-    <p class="echo rise" data-edit="posEcho">BERBUAL · TERBIT · JUAL</p>
+    <p class="echo rise" data-edit="posEcho">STUDIO · HTML ANDA · CLAUDE &amp; CHATGPT</p>
   </section>
 
-  <!-- 12 · PROOF -->
+  <!-- 17 · BUILT IN MALAYSIA -->
   <section class="slide bg-navy proofbg">
-    <h1 class="hero rise" data-edit="prH">INI BUKAN<br>PROTOTYPE.</h1>
-    <p class="support rise" data-edit="prS">heresell.my — dah live.</p>
+    <h1 class="hero rise" style="font-size:clamp(2.4rem,6vw,7rem)" data-edit="myH">DIBINA DI MALAYSIA,<br><span style="color:#5D8FF7">UNTUK PENJUAL MALAYSIA.</span></h1>
+    <p class="support rise" data-edit="myS">heresell.my — dah live.</p>
   </section>
 
-  <!-- 13 · OFFER (placeholder) -->
+  <!-- 18 · OFFER -->
   <section class="slide bg-soft">
-    <p class="eyebrow rise" data-edit="ofE">Tawaran khas malam ini</p>
-    <h1 class="hero mega rise"><span class="glow" data-edit="ofH">[RM __]</span></h1>
-    <p class="support rise" data-edit="ofS">[Butiran tawaran]</p>
-    <p class="quiet rise" data-edit="ofQ">[Sah sehingga __]</p>
+    <p class="eyebrow rise" data-edit="ofrE">Mula hari ini</p>
+    <h1 class="hero mega rise"><span class="glow" data-edit="ofrH">RM0</span></h1>
+    <p class="support rise" data-edit="ofrS"><b style="color:var(--navy);font-weight:800">komitmen.</b> Bayar ikut guna.</p>
+    <p class="quiet rise" data-edit="ofrQ" style="font-size:clamp(1rem,1.5vw,1.6rem)">+ kredit AI percuma setiap bulan</p>
   </section>
 
-  <!-- 14 · QR CTA -->
+  <!-- 19 · QR CTA -->
   <section class="slide bg-mist">
     <div class="split rise">
       <div class="txt">
         <h1 class="hero" style="font-size:clamp(2.2rem,5vw,5.6rem)" data-edit="ctaH">MULA JUAL<br><span class="blue">MALAM INI.</span></h1>
-        <p class="support" data-edit="ctaS">heresell.my</p>
-        <p class="quiet" data-edit="ctaQ">Imbas → Daftar → Mula jual</p>
+        <p class="support" data-edit="ctaS">heresell.my/register</p>
+        <p class="quiet" data-edit="ctaQ" style="font-size:clamp(.95rem,1.3vw,1.4rem)">Daftar → Tambah produk → Hantar SSM &amp; bank</p>
       </div>
       <div class="qrcard"><div class="qr"></div></div>
     </div>
   </section>
 
-  <!-- 15 · THANK YOU -->
+  <!-- 20 · THANK YOU -->
   <section class="slide bg-soft">
     <h1 class="hero mega rise"><span class="blue" data-edit="tyH">terima kasih</span></h1>
-    <p class="support rise" data-edit="tyS">heresell.my</p>
+    <p class="support rise" data-edit="tyS">Heresell — Sales pages that sell.</p>
   </section>
 
 </div>
