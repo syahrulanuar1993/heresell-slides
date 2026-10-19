@@ -662,6 +662,11 @@
     <p class="eyebrow rise" data-edit="wlc1" style="font-size:clamp(1.1rem,1.8vw,2rem);letter-spacing:.3em;margin:0">SELAMAT DATANG</p>
   </section>
 
+  <!-- 1b · HERESELL FILM (plays with sound on arrival, restarts each visit) -->
+  <section class="slide bg-navy">
+    <video class="autovid showvid" src="heresell-film.mp4" poster="heresell-film-poster.jpg" playsinline preload="auto"></video>
+  </section>
+
   <!-- 2 · COVER -->
   <section class="slide cover bg-mist">
     <div class="cover-left">
@@ -876,7 +881,7 @@ function show(n){
   if(n!==i) stopYT();
   if(n!==i) document.querySelectorAll('.casevid').forEach(function(v){ v.pause(); var b=v.closest('.caseph'); if(b) b.classList.remove('playing'); });
   document.querySelectorAll('.autovid').forEach(function(v){
-    if(slides[n] && slides[n].contains(v)){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
+    if(slides[n] && slides[n].contains(v)){ if(n!==i) v.currentTime=0; var p=v.play(); if(p&&p.catch) p.catch(function(){ v.muted=true; var q=v.play(); if(q&&q.catch) q.catch(function(){}); }); }
     else v.pause();
   });
   if(n!==i){ var ty=document.getElementById('tkcYT'); if(ty&&ty.contentWindow){ try{ ty.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*'); }catch(e){} } }
